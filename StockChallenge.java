@@ -72,12 +72,8 @@ public class StockChallenge
                               
       JOptionPane.showMessageDialog(null, output);
    }
-   //A series of methods used to check if the input is valid
-   public static boolean isValid(double toCheck)
-   {
-      return toCheck <= 0; //used to ensure each input is greater than 0
-   }
    
+   //A series of methods used to check if the input is valid
    public static boolean isValid(double buyShares, double sellShares)
    {
       return sellShares > buyShares;//used to ensure that fewer are being sold than owned
@@ -86,12 +82,10 @@ public class StockChallenge
    //master method that makes sure all inputs are greater than 0
    public static boolean isValid(double buyShares, double buySharesPrice, double sellShares, double sellSharesPrice)
    {
-      boolean tempA, tempB, tempC, tempD;
-      tempA = isValid(buyShares);
-      tempB = isValid(buySharesPrice);
-      tempC = isValid(sellShares);
-      tempD = isValid(sellSharesPrice);
-      if(tempA || tempB || tempC || tempD)
+      String a = buyShares + "" + buySharesPrice + sellShares + sellSharesPrice;
+      double b = buyShares * buySharesPrice * sellShares * sellSharesPrice;
+      
+      if(a.contains("-") || b == 0)
       {
          return true;
       }
